@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class HelloWorldService {
-    // Spring Caching requires a cache name to function
+    // Cache creates Region with name "Hello"
     @Cacheable("Hello")
     public String getHelloValue(String ignoredArgument) {
         simulateSlowDataStore();
