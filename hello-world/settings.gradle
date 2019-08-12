@@ -3,4 +3,4 @@ pluginManagement {
 		gradlePluginPortal()
 	}
 }
-rootProject.name = 'isbn-search'
+rootProject.name = 'pcc-helloworld'
