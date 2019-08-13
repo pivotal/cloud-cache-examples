@@ -9,9 +9,8 @@ public class HelloWorldController {
     @Autowired
     HelloWorldService helloWorldService;
 
-    @RequestMapping("/Hello")
+    @RequestMapping("/hello")
     public String getHelloValue() {
-        String dataToReturn = "";
         String key = "Hello World";
 
         long timeDiff = System.currentTimeMillis();
@@ -20,9 +19,9 @@ public class HelloWorldController {
 
         timeDiff = System.currentTimeMillis() - timeDiff;
 
-        dataToReturn = "Key: " + key + "  Value: " + helloValue;
-        dataToReturn += "\nTime to look up the value: " + timeDiff + " msec" ;
+        // {"key":"hello","value":"First called at 123","lookupTime":3717}
 
-        return dataToReturn;
+        return "Key: " + key + "<br>  Value: '" + helloValue + "' "
+            + "<br>Time to look up the value: " + timeDiff + " msec" ;
     }
 }

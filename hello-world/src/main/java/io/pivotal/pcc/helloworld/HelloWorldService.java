@@ -5,19 +5,17 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class HelloWorldService {
-    // Cache creates Region with name "Hello"
+    // Creates Region with name "Hello"
     @Cacheable("Hello")
     public String getHelloValue(String ignoredArgument) {
         simulateSlowDataStore();
-        return Long.toString(System.nanoTime());
-
+        return "Initially called at " + System.nanoTime();
     }
 
-    // Don't do this at home
     private void simulateSlowDataStore() {
         try {
-            long time = 3000L;
-            Thread.sleep(time);
+            long artificialDelay = 3000L;
+            Thread.sleep(artificialDelay);
         } catch (InterruptedException e) {
             throw new IllegalStateException(e);
         }
