@@ -3,4 +3,4 @@ applications:
   - name: pcc-helloworld
     path: ./build/libs/pcc-helloworld-0.0.1-SNAPSHOT.jar
     services:
-      - karen-test
+      - <your-pcc-service>

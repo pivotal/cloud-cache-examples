@@ -9,16 +9,21 @@ public class HelloWorldController {
     @Autowired
     HelloWorldService helloWorldService;
 
-    @RequestMapping("/hello")
+    @RequestMapping("/Hello")
     public String getHelloValue() {
-        String key = "Hello World";
 
-        long timeDiff = System.currentTimeMillis();
+        String key = "hello World";
+
+        long timeBeforeQuery = System.currentTimeMillis();
 
         String helloValue = helloWorldService.getHelloValue(key);
 
-        timeDiff = System.currentTimeMillis() - timeDiff;
+        long timeElapsed = System.currentTimeMillis() - timeBeforeQuery;
 
-        return "{\"key\":\"" + key + "\",\"value\":\"" + helloValue + "\",\"lookupTime\":" + timeDiff + "}";
+        return "{"
+                    + "\"key\":\"" + key
+                    + "\",\"value\":\""
+                    + helloValue + "\",\"lookupTime\":" + timeElapsed + " ms"
+                +"}";
     }
 }
