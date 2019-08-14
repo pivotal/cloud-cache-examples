@@ -22,8 +22,8 @@ public class HelloWorldController {
 
         return "{"
                     + "\"key\":\"" + key
-                    + "\",\"value\":\""
-                    + helloValue + "\",\"lookupTime\":" + timeElapsed + " ms"
+                    + "\",\"value\": (time of initial lookup used as value in cache) \"" + helloValue + "\","
+                    +"\"lookupTime\":" + timeElapsed + " ms"
                 +"}";
     }
 }
