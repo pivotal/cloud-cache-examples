@@ -19,9 +19,6 @@ public class HelloWorldController {
 
         timeDiff = System.currentTimeMillis() - timeDiff;
 
-        // {"key":"hello","value":"First called at 123","lookupTime":3717}
-
-        return "Key: " + key + "<br>  Value: '" + helloValue + "' "
-            + "<br>Time to look up the value: " + timeDiff + " msec" ;
+        return "{\"key\":\"" + key + "\",\"value\":\"" + helloValue + "\",\"lookupTime\":" + timeDiff + "}";
     }
 }
