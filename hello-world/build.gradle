@@ -1,5 +1,5 @@
 plugins {
-	id 'org.springframework.boot' version '2.1.4.RELEASE'
+	id 'org.springframework.boot' version '2.1.5.RELEASE'
 	id 'java'
 }
 
@@ -11,17 +11,9 @@ sourceCompatibility = '1.8'
 
 repositories {
 	mavenCentral()
-	maven { url = "https://repo.spring.io/libs-snapshot" }
 }
 
 dependencies {
-	implementation('org.springframework.geode:spring-geode-starter:1.0.0.RELEASE'){
-		constraints{
-			implementation('org.apache.geode:geode-core:1.8.0'){
-				because "We need to test with the latest geode version"
-			}
-		}
-	}
+	implementation('org.springframework.geode:spring-geode-starter:1.0.1.RELEASE')
 	implementation ('org.springframework.boot:spring-boot-starter-web')
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
