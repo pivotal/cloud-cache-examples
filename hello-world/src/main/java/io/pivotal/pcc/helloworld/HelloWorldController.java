@@ -10,7 +10,7 @@ public class HelloWorldController {
     @Autowired
     HelloWorldService helloWorldService;
 
-    @RequestMapping(value="/Hello", produces = "application/json")
+    @RequestMapping(value="/hello", produces = "application/json")
     public String getHelloValue() {
 
         String key = "hello World";
