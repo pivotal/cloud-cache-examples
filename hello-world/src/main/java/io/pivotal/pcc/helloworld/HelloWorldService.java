@@ -10,16 +10,15 @@ import java.util.TimeZone;
 
 @Service
 public class HelloWorldService {
-    // Creates Region with name "Hello"
 
+    // @Cacheable creates Region with name "Hello", automatically uses argument of getHelloValue() as key
     @Cacheable("Hello")
-    public String getHelloValue(String ignoredArgument) {
+    // This code will not be called if key/value pair found in cache
+    public String getHelloValue(String key) {
         simulateSlowDataStore();
 
-        Instant instant  = Instant.ofEpochMilli(System.currentTimeMillis());
-        LocalDateTime localDateTime =  LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
-
-        return  localDateTime.toString();
+        String value = getTimeOfInitialLookup();
+        return value;
     }
 
     private void simulateSlowDataStore() {
@@ -29,5 +28,15 @@ public class HelloWorldService {
         } catch (InterruptedException e) {
             throw new IllegalStateException(e);
         }
+    }
+
+    private String getTimeOfInitialLookup() {
+        Instant instant =
+                Instant.ofEpochMilli(System.currentTimeMillis());
+
+        LocalDateTime localDateTime =
+                LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
+
+        return localDateTime.toString();
     }
 }
