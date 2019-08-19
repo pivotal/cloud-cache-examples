@@ -6,12 +6,12 @@ import org.springframework.stereotype.Service;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.TimeZone;
 
 @Service
 public class HelloWorldService {
 
-    // @Cacheable creates Region with name "Hello", automatically uses argument of getHelloValue() as key
+    // @Cacheable automatically uses argument of getHelloValue() as key, caches returned value
+    // (Region with name "Hello" will be created via @EnableCachingDefinedRegions on Application)
     @Cacheable("Hello")
     // This code will not be called if key/value pair found in cache
     public String getHelloValue(String key) {
