@@ -13,7 +13,7 @@ public class HelloWorldController {
     @RequestMapping(value="/hello", produces = "application/json")
     public String getHelloValue() {
 
-        String key = "hello World";
+        String key = "hello";
 
         long timeBeforeQuery = System.currentTimeMillis();
 
@@ -24,7 +24,7 @@ public class HelloWorldController {
         return "{"
                 + "\"key\":\"" + key + "\",\""
                 +"value (time of initial lookup used as value in cache)\":\"" + helloValue + "\","
-                +"\"timeToLookup\":\"" + timeElapsed + "ms\""
+                +"\"timeToLookUp\":\"" + timeElapsed + "ms\""
                 +"}";
     }
 
