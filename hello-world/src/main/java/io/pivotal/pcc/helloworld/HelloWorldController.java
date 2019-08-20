@@ -27,4 +27,20 @@ public class HelloWorldController {
                 +"\"timeToLookup\":\"" + timeElapsed + "ms\""
                 +"}";
     }
+
+    @RequestMapping(value="/hello-html", produces = "text/html")
+    public String getHelloHtmlValue() {
+
+        String key = "hello";
+
+        long timeBeforeQuery = System.currentTimeMillis();
+
+        String helloValue = helloWorldService.getHelloValue(key);
+
+        long timeElapsed = System.currentTimeMillis() - timeBeforeQuery;
+
+        return "<html><body>"
+                + "<i>key:</i> " + key + " <i>value:</i> " + helloValue + "<br>"
+                + "<i>time to look up:</i> <b>" + timeElapsed + "ms</b></body></html>";
+    }
 }
