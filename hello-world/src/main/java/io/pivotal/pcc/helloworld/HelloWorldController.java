@@ -13,7 +13,7 @@ public class HelloWorldController {
     @RequestMapping(value="/hello", produces = "application/json")
     public String getHelloValue() {
 
-        String key = "hello World";
+        String key = "hello";
 
         long timeBeforeQuery = System.currentTimeMillis();
 
@@ -24,7 +24,23 @@ public class HelloWorldController {
         return "{"
                 + "\"key\":\"" + key + "\",\""
                 +"value (time of initial lookup used as value in cache)\":\"" + helloValue + "\","
-                +"\"timeToLookup\":\"" + timeElapsed + "ms\""
+                +"\"timeToLookUp\":\"" + timeElapsed + "ms\""
                 +"}";
+    }
+
+    @RequestMapping(value="/hello-html", produces = "text/html")
+    public String getHelloHtmlValue() {
+
+        String key = "hello";
+
+        long timeBeforeQuery = System.currentTimeMillis();
+
+        String helloValue = helloWorldService.getHelloValue(key);
+
+        long timeElapsed = System.currentTimeMillis() - timeBeforeQuery;
+
+        return "<html><body>"
+                + "<i>key:</i> " + key + " <i>value:</i> " + helloValue + "<br>"
+                + "<i>time to look up:</i> <b>" + timeElapsed + "ms</b></body></html>";
     }
 }

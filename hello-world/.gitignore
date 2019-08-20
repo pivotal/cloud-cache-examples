@@ -1,6 +1,8 @@
 .gradle/
  .idea/
 .idea/
+locator/
+server/
 .project
 .settings/
 build/
