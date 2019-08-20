@@ -17,3 +17,22 @@ dependencies {
 	implementation('org.springframework.geode:spring-geode-starter:1.0.1.RELEASE')
 	implementation ('org.springframework.boot:spring-boot-starter-web')
 }
+
+task testStuff(type: Exec) {
+
+	workingDir "${projectDir}/scripts"
+
+    def startScript =
+            workingDir "${projectDir}/scripts/start.gfsh"
+
+	commandLine 'cmd','/c','gfsh run --file=start.gfsh'
+
+}
+
+task startServer(type: Exec) {
+	commandLine 'gfsh run --file=./scripts/start.gfsh'
+}
+
+task stopServer(type: Exec) {
+	commandLine 'gfsh run --file=./scripts/stop.gfsh'
+}
