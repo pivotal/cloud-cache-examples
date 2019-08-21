@@ -18,10 +18,25 @@ dependencies {
 	implementation ('org.springframework.boot:spring-boot-starter-web')
 }
 
-task startServer(type: Exec) {
-	commandLine 'gfsh', 'run', '--file=./scripts/start.gfsh'
+task createClusterDir(type:Exec) {
+	commandLine 'mkdir', 'cluster'
 }
 
-task stopServer(type: Exec) {
+task startServer(type: Exec) {
+	dependsOn 'createClusterDir'
+	workingDir './cluster'
+	commandLine 'gfsh', 'run', '--file=../scripts/start.gfsh'
+}
+
+task shutdownServer(type: Exec) {
 	commandLine 'gfsh', 'run', '--file=./scripts/stop.gfsh'
+}
+
+task cleanUpClusterDirectory(type: Exec) {
+	commandLine 'rm', '-r', 'cluster'
+}
+
+task stopServer {
+	dependsOn 'shutdownServer'
+	dependsOn 'cleanUpClusterDirectory'
 }
