@@ -1,5 +1,5 @@
 plugins {
-	id 'org.springframework.boot' version '2.1.5.RELEASE'
+	id 'org.springframework.boot' version '2.1.7.RELEASE'
 	id 'java'
 }
 
@@ -11,10 +11,11 @@ sourceCompatibility = '1.8'
 
 repositories {
 	mavenCentral()
+	maven { url = "https://repo.spring.io/libs-milestone" }
 }
 
 dependencies {
-	implementation('org.springframework.geode:spring-geode-starter:1.0.1.RELEASE')
+	implementation('org.springframework.geode:spring-gemfire-starter:1.1.0.RELEASE')
 	implementation ('org.springframework.boot:spring-boot-starter-web')
 }
 
@@ -39,4 +40,8 @@ task cleanUpClusterDirectory(type: Exec) {
 task stopServer {
 	dependsOn 'shutdownServer'
 	dependsOn 'cleanUpClusterDirectory'
+}
+
+bootRun {
+    jvmArgs = ["-Dspring.profiles.active=localCluster"]
 }
