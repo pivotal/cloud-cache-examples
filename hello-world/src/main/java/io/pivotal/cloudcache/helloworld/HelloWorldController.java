@@ -1,4 +1,4 @@
-package io.pivotal.pcc.helloworld;
+package io.pivotal.cloudcache.helloworld;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

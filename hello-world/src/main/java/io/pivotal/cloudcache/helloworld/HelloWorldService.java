@@ -1,4 +1,4 @@
-package io.pivotal.pcc.helloworld;
+package io.pivotal.cloudcache.helloworld;
 
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
