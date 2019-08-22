@@ -1,6 +1,6 @@
 ---
 applications:
-  - name: pcc-helloworld
-    path: ./build/libs/pcc-helloworld-0.0.1-SNAPSHOT.jar
+  - name: helloworld
+    path: ./build/libs/helloworld-0.0.1-SNAPSHOT.jar
     services:
-      - <your-pcc-service>
+      - <your-pivotal-cloud-cache-service>

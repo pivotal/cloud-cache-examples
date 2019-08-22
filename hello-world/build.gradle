@@ -5,7 +5,7 @@ plugins {
 
 apply plugin: 'io.spring.dependency-management'
 
-group = 'io.pivotal.pcc.helloworld'
+group = 'io.pivotal.cloudcache.helloworld'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
@@ -19,26 +19,31 @@ dependencies {
 	implementation ('org.springframework.boot:spring-boot-starter-web')
 }
 
-task createClusterDir(type:Exec) {
+task createClusterDirectory(type:Exec) {
+	group = 'cluster'
 	commandLine 'mkdir', 'cluster'
 }
 
-task startServer(type: Exec) {
-	dependsOn 'createClusterDir'
+task startCluster(type: Exec) {
+	group = 'cluster'
+	dependsOn 'createClusterDirectory'
 	workingDir './cluster'
 	commandLine 'gfsh', 'run', '--file=../scripts/start.gfsh'
 }
 
-task shutdownServer(type: Exec) {
+task stopCluster(type: Exec) {
+	group = 'cluster'
 	commandLine 'gfsh', 'run', '--file=./scripts/stop.gfsh'
 }
 
 task cleanUpClusterDirectory(type: Exec) {
+	group = 'cluster'
 	commandLine 'rm', '-r', 'cluster'
 }
 
-task stopServer {
-	dependsOn 'shutdownServer'
+task stopAndCleanUpCluster {
+	group = 'cluster'
+	dependsOn 'stopCluster'
 	dependsOn 'cleanUpClusterDirectory'
 }
 
