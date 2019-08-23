@@ -21,6 +21,7 @@ dependencies {
 
 task createClusterDirectory(type:Exec) {
 	group = 'cluster'
+	dependsOn 'cleanUpClusterDirectory'
 	commandLine 'mkdir', 'cluster'
 }
 
