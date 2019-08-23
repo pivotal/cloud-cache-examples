@@ -8,14 +8,14 @@ import org.springframework.data.gemfire.config.annotation.EnableCachingDefinedRe
 import org.springframework.data.gemfire.config.annotation.EnableClusterConfiguration;
 
 @SpringBootApplication
-// Causes the creation of server-side PCC/GemFire regions via the @Cacheable annotation during the
+// Causes the creation of server-side Cloud Cache/GemFire regions via the @Cacheable annotation during the
 // Initialization phase of the app's lifecycle
 @EnableCachingDefinedRegions
 public class HelloWorldApplication {
 
 	@Configuration
 	@Profile("!localCluster")
-	// Allows Spring to configure the PCC/Gemfire cluster; necessary for creating regions
+	// Allows Spring to configure the Cloud Cache/GemFire cluster; necessary for creating regions
 	@EnableClusterConfiguration(useHttp = true)
 	static class CloudConfiguration {
 
