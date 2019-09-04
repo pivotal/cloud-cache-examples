@@ -39,7 +39,7 @@ task stopCluster(type: Exec) {
 
 task cleanUpClusterDirectory(type: Exec) {
 	group = 'cluster'
-	commandLine 'rm', '-r', 'cluster'
+	commandLine 'rm', '-rf', 'cluster'
 }
 
 task stopAndCleanUpCluster {
