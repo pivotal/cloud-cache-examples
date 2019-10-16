@@ -3,4 +3,4 @@ applications:
   - name: helloworld
     path: ./build/libs/helloworld-0.0.1-SNAPSHOT.jar
     services:
-      - <your-pivotal-cloud-cache-service>
+      - <SERVICE-INSTANCE-NAME>

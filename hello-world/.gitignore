@@ -1,6 +1,8 @@
+*/credentials.yml
+credentials.yml
 .gradle/
- .idea/
 .idea/
+.DS_Store
 locator/
 server/
 .project
