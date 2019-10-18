@@ -11,9 +11,6 @@ the cache. GemFire is the caching software that powers Pivotal Cloud Cache.
 - The second way pushes the app to a PAS environment to run with a
 Cloud Cache service instance as the cache.
 
-**Prose here to tell developers where to find info on how to set up
-their local development environment.**
-
 As the app runs,
 the browser-based user interface allows the user to look up the value
 associated with the key "hello."
@@ -50,12 +47,23 @@ The app uses the following dependencies:
     ```
     org.springframework.boot:spring-boot-starter-web
     ```
-- Spring GemFire Starter 1.1.x, which requires an additional repository at https://repo.spring.io/libs-milestone:
+- Spring GemFire Starter 1.1.x:
 
     ```
     org.springframework.geode:spring-gemfire-starter:1.1.0.RELEASE
     ```
-
+    &#x1F534; For this dependency, you will need access to the Pivotal Commercial Maven Repository, which requires a one-       time registration step to obtain an account. The URL for both registration and subsequent logins after registration is 
+    https://commercial-repo.pivotal.io/login/auth. Click on the Create Account link to register. You will receive a 
+    confirmation email; follow the directions in this email to activate your account.
+    
+    In the gradle.properties file, configure the following variables with the username and password you used to login 
+    to the commercial repo mentioned above:
+    
+    ```
+    gemfireReleaseRepoUser=<USERNAME>
+    gemfireReleaseRepoPassword=<PASSWORD>
+    ```
+    
 ## Step 1: Acquire the Hello, World App Source Code
 
 Clone the Hello, World! app from the repository at
