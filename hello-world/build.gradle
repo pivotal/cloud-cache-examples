@@ -9,8 +9,8 @@
  */
 
 plugins {
-	id 'org.springframework.boot' version '2.1.7.RELEASE'
-	id 'java'
+    id 'org.springframework.boot' version '2.1.7.RELEASE'
+    id 'java'
 }
 
 apply plugin: 'io.spring.dependency-management'
@@ -20,42 +20,48 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 repositories {
-	mavenCentral()
-	maven { url = "https://repo.spring.io/libs-milestone" }
+    mavenCentral()
+    maven {
+        credentials {
+            username "$gemfireReleaseRepoUser"
+            password "$gemfireReleaseRepoPassword"
+        }
+        url "https://commercial-repo.pivotal.io/data3/gemfire-release-repo/gemfire"
+    }
 }
 
 dependencies {
-	implementation('org.springframework.geode:spring-gemfire-starter:1.1.0.RELEASE')
-	implementation ('org.springframework.boot:spring-boot-starter-web')
+    implementation('org.springframework.geode:spring-gemfire-starter:1.1.0.RELEASE')
+    implementation('org.springframework.boot:spring-boot-starter-web')
 }
 
-task createClusterDirectory(type:Exec) {
-	group = 'cluster'
-	dependsOn 'cleanUpClusterDirectory'
-	commandLine 'mkdir', 'cluster'
+task createClusterDirectory(type: Exec) {
+    group = 'cluster'
+    dependsOn 'cleanUpClusterDirectory'
+    commandLine 'mkdir', 'cluster'
 }
 
 task startCluster(type: Exec) {
-	group = 'cluster'
-	dependsOn 'createClusterDirectory'
-	workingDir './cluster'
-	commandLine 'gfsh', 'run', '--file=../scripts/start.gfsh'
+    group = 'cluster'
+    dependsOn 'createClusterDirectory'
+    workingDir './cluster'
+    commandLine 'gfsh', 'run', '--file=../scripts/start.gfsh'
 }
 
 task stopCluster(type: Exec) {
-	group = 'cluster'
-	commandLine 'gfsh', 'run', '--file=./scripts/stop.gfsh'
+    group = 'cluster'
+    commandLine 'gfsh', 'run', '--file=./scripts/stop.gfsh'
 }
 
 task cleanUpClusterDirectory(type: Exec) {
-	group = 'cluster'
-	commandLine 'rm', '-rf', 'cluster'
+    group = 'cluster'
+    commandLine 'rm', '-rf', 'cluster'
 }
 
 task stopAndCleanUpCluster {
-	group = 'cluster'
-	dependsOn 'stopCluster'
-	dependsOn 'cleanUpClusterDirectory'
+    group = 'cluster'
+    dependsOn 'stopCluster'
+    dependsOn 'cleanUpClusterDirectory'
 }
 
 bootRun {
