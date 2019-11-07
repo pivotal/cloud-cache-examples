@@ -1,0 +1,6 @@
+---
+applications:
+  - name: bikeincidents
+    path: ./build/libs/look-aside-cache.jar
+    services:
+      - <SERVICE-INSTANCE-NAME>
