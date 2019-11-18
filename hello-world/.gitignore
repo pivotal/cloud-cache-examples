@@ -1,6 +1,5 @@
 */credentials.yml
 credentials.yml
-.gradle/
 .idea/
 .DS_Store
 locator/
