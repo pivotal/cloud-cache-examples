@@ -20,7 +20,7 @@ repositories {
 }
 
 configurations {
-    all {
+    all { // needed to avoid issue with interaction with log4j
         exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
     }
 }

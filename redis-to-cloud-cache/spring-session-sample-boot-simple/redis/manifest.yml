@@ -1,0 +1,6 @@
+---
+applications:
+  - name: boot-redis-simple
+    path: ./build/libs/bootsimple.session.redis.jar
+    services:
+      - <SERVICE-INSTANCE-NAME>

@@ -1,0 +1,6 @@
+---
+applications:
+  - name: boot-redis-json
+    path: ./build/libs/bootjson.session.redis.jar
+    services:
+      - <SERVICE-INSTANCE-NAME>

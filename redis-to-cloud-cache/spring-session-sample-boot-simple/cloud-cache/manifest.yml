@@ -1,0 +1,6 @@
+---
+applications:
+  - name: bootsimple-cloud-cache
+    path: ./build/libs/bootsimple.session.cloudcache.jar
+    services:
+      - <SERVICE-INSTANCE-NAME>
