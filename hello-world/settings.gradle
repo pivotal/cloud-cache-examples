@@ -13,4 +13,4 @@ pluginManagement {
 		gradlePluginPortal()
 	}
 }
-rootProject.name = 'helloworld'
+rootProject.name = 'hello-world'

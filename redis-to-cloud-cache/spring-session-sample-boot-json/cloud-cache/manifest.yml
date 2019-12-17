@@ -1,0 +1,6 @@
+---
+applications:
+  - name: boot-cloud-cache-json
+    path: ./build/libs/bootjson.session.cloudcache.jar
+    services:
+      - <SERVICE-INSTANCE-NAME>
