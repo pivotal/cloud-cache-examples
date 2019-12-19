@@ -1,0 +1,7 @@
+---
+applications:
+  - name: pubsub-cloudcache
+    path: ./build/libs/pubsub.cloudcache.jar
+    health-check-type: process
+    services:
+      - <SERVICE-INSTANCE-NAME>

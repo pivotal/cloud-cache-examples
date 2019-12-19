@@ -1,9 +1,8 @@
-# Spring Session Sample Boot JSON
+# Spring Session Sample Boot Simple
 
 The projects in this directory illustrate a standard Spring Boot application using Spring Session to save session data
-with either Redis or Cloud Cache. In this example, the Redis version serialized the session data to JSON format before
-storing it in the cache.In this guide, we will highlight the changes necessary for switching from Redis to Cloud Cache
-for session state caching utilizing the
+with either Redis or Cloud Cache. In this guide, we will highlight the changes necessary for switching from Redis to
+Cloud Cache for session state caching utilizing the
 [Spring Boot for Pivotal GemFire Session starter](https://docs.spring.io/autorepo/docs/spring-boot-data-geode-build/current/reference/html5/#introduction).
 
 ## How to Convert from Redis to Cloud Cache
@@ -12,7 +11,6 @@ for session state caching utilizing the
 The Spring Boot Redis dependencies need to be updated to use Cloud Cache.
 
 Remove these dependencies:
-
 
 ```java
 implementation 'org.springframework.boot:spring-boot-starter-data-redis'
@@ -44,16 +42,15 @@ repositories {
 ```
 
 ### Update `gradle.properties`
-Add your [Pivotal Maven Commercial repo](https://commercial-repo.pivotal.io/login/auth) username and password to the
-`gradle.properties` file:
+Add your [Pivotal Maven Commercial repo](https://commercial-repo.pivotal.io/login/auth) username and password to the `gradle.properties` file:
 
 ```properties
 gemfireReleaseRepoUser=<USERNAME>
 gemfireReleaseRepoPassword=<PASSWORD>
 ```
 
-Replace `<USERNAME>` with your username and `<PASSWORD>` with your password. If you do not have a username and
-passsword, register [here](https://commercial-repo.pivotal.io/login/auth) to get an account.
+Replace `<USERNAME>` with your username and `<PASSWORD>` with your password. If you do not have a username and passsword, 
+register [here](https://commercial-repo.pivotal.io/login/auth) to get an account.
 
 ### Add `@EnableClusterAware`
 In your main application or config class (in this example `Application.java`), import and add the `@EnableClusterAware` 
@@ -84,17 +81,15 @@ public static ConfigureRedisAction configureRedisAction() {
 }
 ```
 
-### Remove the `SessionConfig` Class
-For Redis, it is sometimes necessary to provide a specific serializer to control how data is stored on the server. This
-is not necessary for Cloud Cache, which by default provides the [PDX Serializer](https://gemfire.docs.pivotal.io/99/geode/developing/data_serialization/gemfire_pdx_serialization.html).
-Therefore the SessionConfig class is no longer needed and should be removed.
+### Remove `SessionConfig` class
+This class has configuration for a Redis session that is no longer needed for Cloud Cache.
 
 ### Optional/Housekeeping
 For most projects, the following changes will not be necessary, but in this example the Cloud Cache application is a
 separate, self-contained project and these tweaks were needed:
 
-- In `settings.gradle`, update the `rootProject.name` from `bootjson.session.redis` to `bootjson.session.cloudcache`.
-- In `manifest.yml`, update the JAR name in `path` from `bootjson.session.redis` to `bootjson.session.cloudcache`.
+- In `settings.gradle`, update the `rootProject.name` from `bootsimple.session.redis` to `bootsimple.session.cloudcache`.
+- In `manifest.yml`, update the JAR name in `path` from `bootsimple.session.redis` to `bootsimple.session.cloudcache`.
 
 ## Running the Cloud Cache Application
 
@@ -103,17 +98,23 @@ Navigate to the Cloud Cache application directory and execute the following comm
 ./gradlew bootRun
 ```
 
+**Note:** If you do not have a local GemFire/Cloud Cache instance running, you will see an exception logged of the form:
+`Could not connect to: localhost:40404`. The application is still running normally using the internal cache
+implementation.
+
 Go to localhost:8080 in your browser of choice. You should see a login screen like the following:
 ![login page](readme-images/login-page.png)
 
-If you haven't changed the password or user, you can login with the username of `user` and password of `password`.
+If you haven't changed the password or user, you can login with the username of user and password of password.
 
 Once you've logged in successfully, you should see a page similar to the following:
 ![secured page](readme-images/secured-page.png)
 
-You can use the form to add attributes to the session. You should be able to refresh the page or close the tab
-and open a new one, but when you navigate back to the application you will still be logged in, and the attributes will
-still be present. 
+You should be able to refresh the page or close the tab and open a new one, but when you navigate back to the
+application you will still be logged in.
+
+**Note:** When running these examples on the Pivotal Platform, you will need to update the manifest.yml file to bind to your
+Redis or [Cloud Cache](https://docs.pivotal.io/cloud-cache-dev/get-started#test-pas) service instance.
 
 ## Notes on Testing
 For these applications, the intention was to demonstrate how to migrate from Redis to Cloud Cache.  If your tests are 

@@ -95,6 +95,10 @@ Navigate to the Cloud Cache application directory and execute the following comm
 ./gradlew bootRun
 ```
 
+**Note:** If you do not have a local GemFire/Cloud Cache instance running, you will see an exception logged of the form:
+`Could not connect to: localhost:40404`. The application is still running normally using the internal cache
+implementation.
+
 Go to localhost:8080 in your browser of choice. You should see a login screen like the following:
 ![login page](readme-images/login-page.png)
 
@@ -105,6 +109,9 @@ Once you've logged in successfully, you should see a page similar to the followi
 
 You should be able to refresh the page or close the tab and open a new one, but when you navigate back to the
 application you will still be logged in.
+
+**Note:** When running these examples on the Pivotal Platform, you will need to update the manifest.yml file to bind to your
+Redis or [Cloud Cache](https://docs.pivotal.io/cloud-cache-dev/get-started#test-pas) service instance.
 
 ## Notes on Testing
 For these applications, the intention was to demonstrate how to migrate from Redis to Cloud Cache.  If your tests are 
