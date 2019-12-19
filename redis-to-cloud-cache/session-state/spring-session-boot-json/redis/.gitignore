@@ -3,7 +3,7 @@ out/
 *.iml
 .idea/
 .DS_Store
-gradle/
 .gradle/
+gradle/
 gradlew
 gradlew.bat
