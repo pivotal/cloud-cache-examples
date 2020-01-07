@@ -1,0 +1,92 @@
+/*
+ * Copyright (C) 2019-Present Pivotal Software, Inc. All rights reserved.
+ *
+ * This program and the accompanying materials are made available under the terms of the under the Apache License, Version
+ * 2.0 (the "License”); you may not use this file except in compliance with the License. You may obtain a copy of the
+ * License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific
+ * language governing permissions and limitations under the License.
+ */
+
+@import "fonts.css";
+
+body {
+    font-family: proxima_nova_reg, sans-serif;
+    font-size: 18px;
+    line-height: 22px;
+    margin: 40px;
+    background-color: #F7F7F7;
+}
+
+h1 {
+    font-family: proxima_nova_bold, sans-serif;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 44px;
+    margin: 0 0 20px 0;
+}
+
+h2 {
+    font-family: proxima_nova_semibold, sans-serif;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 28px;
+    margin: 100px 20px 0 0;
+}
+
+.NotesForm {
+    display: flex;
+    align-items: center;
+}
+
+.NotesForm__note-label {
+    font-family: proxima_nova_semibold, sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    margin-right: 10px;
+}
+
+.NotesForm__note-input {
+    box-sizing: border-box;
+    height: 30px;
+    width: 193px;
+    border: 1px solid #979797;
+    border-radius: 2px;
+    margin-right: 10px;
+    background-color: #FFFFFF;
+}
+
+.NotesForm__submit-button {
+    height: 29px;
+    width: 80px;
+    border-radius: 2px;
+    padding: 0;
+    background-color: #00A390;
+    color: #F7F7F7;
+    font-family: proxima_nova_reg, sans-serif;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.NotesDisplay__header-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.NotesDisplay__destroy-session-button {
+    background: none;
+    color: #00A390;
+    border: none;
+    padding: 0;
+    font-size: 14px;
+    line-height: 17px;
+    font-family: proxima_nova_bold, sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+}

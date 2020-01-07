@@ -1,0 +1,9 @@
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+.idea
+*.iml
+out/
+src/main/resources/static/
