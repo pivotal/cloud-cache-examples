@@ -18,10 +18,22 @@ context('App', () => {
     });
 
     describe('When user adds a note ', () => {
+        before(() => {
+            cy.server();
+            cy.route({
+                method: 'POST',
+                url: '/addSessionNote',
+            }).as('addSessionNoteRouteAlias');
+            cy.route({
+                method: 'POST',
+                url: '/invalidateSession',
+            }).as('invalidateSessionRouteAlias');
+        });
 
         it('should display note in note list', () => {
             cy.get('[data-qa="NotesForm__note-input"]').type("a test note");
             cy.get('[data-qa="NotesForm__submit-button"]').click();
+            cy.wait('@addSessionNoteRouteAlias');
 
             cy.get('[data-qa="NotesDisplay__note"]')
                 .should((notes) => {
@@ -32,6 +44,7 @@ context('App', () => {
 
         after(() => {
             cy.get('[data-qa="NotesDisplay__destroy-session-button"]').click();
+            cy.wait('@invalidateSessionRouteAlias');
         });
     });
 
@@ -43,12 +56,16 @@ context('App', () => {
                 method: 'POST',
                 url: '/addSessionNote',
             }).as('addSessionNoteRouteAlias');
+            cy.route({
+                method: 'POST',
+                url: '/invalidateSession',
+            }).as('invalidateSessionRouteAlias');
             cy.get('[data-qa="NotesForm__note-input"]').type("note to be saved in the session");
             cy.get('[data-qa="NotesForm__submit-button"]').click();
             cy.wait('@addSessionNoteRouteAlias');
         });
         
-        it('should diplay all notes previously added in session', () => {
+        it('should display all notes previously added in session', () => {
             cy.reload();
 
             cy.get('[data-qa="NotesDisplay__note"]')
@@ -60,23 +77,34 @@ context('App', () => {
 
         after(() => {
             cy.get('[data-qa="NotesDisplay__destroy-session-button"]').click();
+            cy.wait('@invalidateSessionRouteAlias');
         });
     });
 
-    describe('When user destroy the session', () => {
+    describe('When user destroys the session', () => {
         before(() => {
+            cy.server();
+            cy.route({
+                method: 'POST',
+                url: '/addSessionNote',
+            }).as('addSessionNoteRouteAlias');
+            cy.route({
+                method: 'POST',
+                url: '/invalidateSession',
+            }).as('invalidateSessionRouteAlias');
             cy.get('[data-qa="NotesForm__note-input"]').type("note to be destroyed");
             cy.get('[data-qa="NotesForm__submit-button"]').click();
+            cy.wait('@addSessionNoteRouteAlias');
         });
 
         it('should no longer display any notes', () => {
-
             cy.get('[data-qa="NotesDisplay__note"]')
                 .should((notes) => {
                     expect(notes).to.have.length(1);
                 });
 
             cy.get('[data-qa="NotesDisplay__destroy-session-button"]').click();
+            cy.wait('@invalidateSessionRouteAlias');
 
             cy.get('[data-qa="NotesDisplay__note"]')
                 .should((notes) => {
