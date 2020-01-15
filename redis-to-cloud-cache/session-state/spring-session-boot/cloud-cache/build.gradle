@@ -19,7 +19,7 @@ plugins {
 }
 
 group = 'boot.session.cloudcache'
-sourceCompatibility = '1.8'
+sourceCompatibility = "$javaVersion"
 
 configurations {
     developmentOnly

@@ -12,6 +12,7 @@
  * language governing permissions and limitations under the License.
  */
 
+
 buildscript {
     repositories {
         mavenCentral()
@@ -24,6 +25,7 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+sourceCompatibility = "$javaVersion"
 
 repositories {
     mavenCentral()

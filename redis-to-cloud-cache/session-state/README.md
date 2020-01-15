@@ -10,15 +10,12 @@ Unless required by applicable law or agreed to in writing, software distributed 
 "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific
 language governing permissions and limitations under the License.-->
 
-# Cloud Cache Examples
+# Redis to Cloud Cache Session State Examples
 
-This repo contains examples of apps that demonstrate the use of
-Pivotal Cloud Cache.
+This repo contains examples of converting Redis applications to use Cloud Cache to store HTTP session state data.
 
-Each example app resides in its own directory within this repository:
+Each example app has its own README, and resides in its own directory within this repository:
 
-- Hello, World! in `hello-world`
-- Example of look-aside caching pattern in `look-aside-cache`
-- Example of implementing an HTTP session state cache in `session-state`
-- Example of converting a Redis Publish/Subscribe app to Cloud Cache in `redis-to-cloud-cache/pub-sub`
-- Examples of converting Spring Session Redis apps to Cloud Cache in `redis-to-cloud-cache/session-state`
+- `spring-session-boot`
+- `spring-session-boot-json`
+- `spring-session-boot-simple`
