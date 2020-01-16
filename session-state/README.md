@@ -114,7 +114,8 @@ public class SessionStateApplication {
 
 [@EnableClusterAware](https://docs.spring.io/autorepo/docs/spring-boot-data-geode-build/current/reference/html5/#geode-configuration-declarative-annotations-productivity-enableclusteraware)
 Allows the application to seamlessly switch between local-only (application running on local machine) and client/server
-(application running on PAS).  This annotation includes the [@EnableClusterConfiguration](https://docs.spring.io/autorepo/docs/spring-boot-data-geode-build/current/reference/html5/#geode-configuration-declarative-annotations-productivity-enableclusteraware)
+(application running on PAS).  This annotation includes the 
+[@EnableClusterConfiguration](https://docs.spring.io/spring-data/geode/docs/current/reference/html/#bootstrap-annotation-config-cluster)
 annotation, which dynamically creates regions if they do not exist already. Note that the `@EnableClusterConfiguration`
 annotation will only create Regions, it will not delete or update existing regions.
 
@@ -174,13 +175,19 @@ const destroySession = async () => {
 
 ### 4. Build and Run the application!
 
-To build and run the application **locally**, execute the command `./gradlew bootRun` The web application will be
+To build and run the application **locally**, execute the command `./gradlew bootRun` 
+
+**Note:** If you do not have a local GemFire/Cloud Cache instance running, you will see an exception logged of the form:
+`Could not connect to: localhost:40404`. The application is still running normally using the internal cache
+implementation.
+
+The web application will be
 accessible at [http://localhost:8080](http://localhost:8080) by default. The "Enter your note:" form can be
 used to enter notes. The “DESTROY SESSION” button can be used to clear the session data and delete the notes.
 
 ![screenshot front end application running](frontEndScreenShot.png)
 
-To run the application ***on the Pivotal Platform with Cloud Cache**, first make sure you’ve [created a service
+To run the application **on the Pivotal Platform with Cloud Cache**, first make sure you’ve [created a service
 instance](https://docs.pivotal.io/cloud-cache-dev/get-started#test-pas) that you can bind your application to. Then
 in the `manifest.yml`, replace the `<SERVICE-INSTANCE-NAME>` with the name of your service instance. 
 
