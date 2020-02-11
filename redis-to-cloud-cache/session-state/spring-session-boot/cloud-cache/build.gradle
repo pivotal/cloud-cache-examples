@@ -13,7 +13,7 @@
  */
 
 plugins {
-    id 'org.springframework.boot' version '2.2.2.RELEASE'
+    id 'org.springframework.boot' version '2.2.4.RELEASE'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id 'java'
 }
@@ -40,8 +40,8 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.geode:spring-gemfire-starter-session:1.2.2.RELEASE'
-    implementation 'org.springframework.session:spring-session-data-geode:2.2.1.RELEASE'
+    implementation 'org.springframework.geode:spring-gemfire-starter-session:1.2.4.RELEASE'
+    implementation 'org.springframework.session:spring-session-data-geode:2.2.2.RELEASE'
 
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-security'
