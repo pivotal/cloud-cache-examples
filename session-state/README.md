@@ -77,8 +77,8 @@ repositories {
 }
 
 dependencies {
-  implementation 'org.springframework.geode:spring-gemfire-starter-session:1.2.2.RELEASE'
-  implementation 'org.springframework.session:spring-session-data-geode:2.2.1.RELEASE'
+  implementation 'org.springframework.geode:spring-gemfire-starter-session:1.2.4.RELEASE'
+  implementation 'org.springframework.session:spring-session-data-geode:2.2.2.RELEASE'
   
    implementation 'org.springframework.boot:spring-boot-starter-web'
    testImplementation('org.springframework.boot:spring-boot-starter-test')

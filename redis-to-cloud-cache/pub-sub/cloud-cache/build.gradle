@@ -18,7 +18,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.2.1.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.2.4.RELEASE")
     }
 }
 
@@ -39,5 +39,5 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.geode:spring-gemfire-starter:1.2.2.RELEASE'
+    implementation 'org.springframework.geode:spring-gemfire-starter:1.2.4.RELEASE'
 }

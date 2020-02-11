@@ -32,8 +32,8 @@ implementation 'org.springframework.session:spring-session-data-redis'
 Replace them with these dependencies:
 
 ```java
-implementation 'org.springframework.geode:spring-gemfire-starter-session:1.2.2.RELEASE'
-implementation 'org.springframework.session:spring-session-data-geode:2.2.1.RELEASE'
+implementation 'org.springframework.geode:spring-gemfire-starter-session:1.2.4.RELEASE'
+implementation 'org.springframework.session:spring-session-data-geode:2.2.2.RELEASE'
 ```
 
 To utilize the Cloud Cache dependencies, you must add the credentials and the url for the
