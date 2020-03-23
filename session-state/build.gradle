@@ -58,16 +58,18 @@ node {
     workDir = file("build/nodejs")
 
     // Set the work directory for NPM
-    npmWorkDir = file("build/npm")
+    npmWorkDir = file("build/node")
+    // Set the work directory for Yarn
+    yarnWorkDir = file("build/yarn")
 }
 
-task appNpmInstall(type: NpmTask) {
+task appYarnInstall(type: YarnTask) {
     description = "Installs all dependencies from package.json"
     workingDir = file("frontend")
     args = ["install"]
 }
 
-task appNpmBuild(type: NpmTask) {
+task appYarnBuild(type: YarnTask) {
     description = "Builds production version of the frontend"
     workingDir = file("frontend")
     args = ["run", "build"]
@@ -78,15 +80,15 @@ task copyFrontEnd(type: Copy) {
     into 'build/resources/main/static/'
 }
 
-task appNpmTest(type: NpmTask) {
+task appYarnTest(type: YarnTask) {
     description = "Builds production version of the frontend"
     workingDir = file("frontend")
     args = ["run", "test"]
 }
 
-appNpmBuild.dependsOn appNpmInstall
-copyFrontEnd.dependsOn appNpmBuild
+appYarnBuild.dependsOn appYarnInstall
+copyFrontEnd.dependsOn appYarnBuild
 processResources.dependsOn copyFrontEnd
 
-appNpmTest.dependsOn appNpmInstall
-test.dependsOn appNpmTest
+appYarnTest.dependsOn appYarnInstall
+test.dependsOn appYarnTest
