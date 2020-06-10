@@ -3,11 +3,12 @@ jobs:
   - name: {{ 'local-test-{}'.format(application["appName"]) }}
     plan:
     - { get: cloud-cache-examples }
-    - { get: cloud-cache-prs, trigger: true, version: every }
+    - { get: cloud-cache-prs, trigger: true, version: every, integration_tool: rebase}
     - put: cloud-cache-prs
       params:
         path: cloud-cache-prs
         status: pending
+        context: {{ 'local-test-{}'.format(application["appName"]) }}
     - in_parallel:
         steps:
       {% for gemfireVersion in application["gemfireVersions"] %}
@@ -55,11 +56,13 @@ jobs:
       params:
         path: cloud-cache-prs
         status: success
+        context: {{ 'local-test-{}'.format(application["appName"]) }}
     on_failure:
       put: cloud-cache-prs
       params:
         path: cloud-cache-prs
         status: failure
+        context: {{ 'local-test-{}'.format(application["appName"]) }}
   {% endfor %}
 
 #  - name: deploy-to-public-repo
