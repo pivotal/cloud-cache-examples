@@ -1,0 +1,30 @@
+resource_types:
+  - name: pull-request
+    type: docker-image
+    source:
+      repository: jtarchie/pr
+
+resources:
+  - name: cloud-cache-examples
+    type: git
+    source:
+      uri: git@github.com:pivotal/cloud-cache-examples.git
+      branch: master
+      private_key: ((repo-key))
+
+  - name: cloud-cache-prs
+    type: pull-request
+    source:
+      access_token: ((access-token))
+      private_key:  ((repo-key))
+      repo:         pivotal/cloud-cache-examples
+      base:         master
+
+#  - name: ci
+#    type: git
+#    source:
+#      branch: master
+#      depth: 1
+#      paths:
+#        - ci/*
+#      uri: https://github.com/pivotal/cloud-cache-examples.git
