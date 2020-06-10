@@ -1,0 +1,73 @@
+jobs:
+  {% for application in applications %}
+  - name: {{ 'local-test-{}'.format(application["appName"]) }}
+    plan:
+    - { get: cloud-cache-examples }
+    - { get: cloud-cache-prs, trigger: true, version: every }
+    - in_parallel:
+        steps:
+      {% for gemfireVersion in application["gemfireVersions"] %}
+        {% for javaVersion in application["javaVersions"] %}
+          {% for springBootVersion in application["springBootVersions"] %}
+            {% if gemfireVersion != "none" %}
+          - task: {{ 'test-{}-springboot-{}-java-{}-gemfire-{}'.format(application["appName"],
+                     springBootVersion["springBootVersion"],
+                     javaVersion,
+                     gemfireVersion) }}
+          {% else %}
+          - task: {{ 'test-{}-springboot-{}-java-{}'.format(application["appName"], springBootVersion["springBootVersion"], javaVersion) }}
+          {% endif %}
+            config:
+              platform: linux
+              image_resource:
+                type: docker-image
+              {% if gemfireVersion != "none" %}
+                source:
+                  repository: sabbey37/gemfire
+                  tag: {{ gemfireVersion }}
+                  username: ((docker-hub-username))
+                  password: ((docker-hub-password))
+              {% else %}
+                source:
+                  repository: openjdk
+                  tag: {{ javaVersion }}
+              {% endif %}
+              params:
+                APP_PATH: {{ application["appPath"] }}
+                GEMFIRE_RELEASE_REPO_USER: ((gemfire-release-repo-user))
+                GEMFIRE_RELEASE_REPO_PASSWORD: ((gemfire-release-repo-password))
+                JAVA_VERSION: {{ javaVersion }}
+                SPRING_BOOT_VERSION: {{ springBootVersion["springBootVersion"] }}
+                SPRING_BOOT_STARTER_VERSION: {{ springBootVersion["springBootStarterVersion"] }}
+              run:
+                path: {{ './cloud-cache-examples/ci/scripts/test/{}'.format(application["localTestScript"]) }}
+              inputs:
+                - name: cloud-cache-examples
+        {% endfor %}
+      {% endfor %}
+    {% endfor %}
+  {% endfor %}
+
+#  - name: deploy-to-public-repo
+#    plan:
+#      - get: cloud-cache-examples
+#        passed:
+#        {% for application in applications %}
+#        - {{ 'local-test-{}'.format(application["appName"]) }}
+#        {% endfor %}
+#      - get: public-cloud-cache-examples
+#      - task: deploy-public-repo
+#        config:
+#          platform: linux
+#          image_resource:
+#            type: docker-image
+#            source: {repository: ubuntu}
+#          run:
+#            path: ./cloud-cache-examples/ci/scripts/prepare-repo-for-push/prepare-repo-for-push.sh
+#          inputs:
+#            - name: cloud-cache-examples
+#          outputs:
+#            - name: cloud-cache-examples-dir
+#      - put: public-cloud-cache-examples
+#        params:
+#          repository: public-cloud-cache-examples-dir
