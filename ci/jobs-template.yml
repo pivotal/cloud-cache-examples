@@ -3,7 +3,7 @@ jobs:
   - name: {{ 'local-test-{}'.format(application["appName"]) }}
     plan:
     - { get: cloud-cache-examples }
-    - { get: cloud-cache-prs, trigger: true, version: every, integration_tool: rebase}
+    - { get: cloud-cache-prs, trigger: true, version: every}
     - put: cloud-cache-prs
       params:
         path: cloud-cache-prs
