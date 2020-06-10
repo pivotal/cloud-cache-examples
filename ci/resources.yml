@@ -8,9 +8,7 @@ resources:
   - name: cloud-cache-examples
     type: git
     source:
-      uri: git@github.com:pivotal/cloud-cache-examples.git
-      branch: master
-      private_key: ((repo-key))
+      uri: https://github.com/pivotal/cloud-cache-examples.git
 
   - name: cloud-cache-prs
     type: pull-request
