@@ -8,6 +8,7 @@ $(python3 render_pipeline_jobs.py)
 EOF
 }
 
+
 generate_secrets() {
   cat << EOF
 ---
