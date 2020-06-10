@@ -4,6 +4,10 @@ jobs:
     plan:
     - { get: cloud-cache-examples }
     - { get: cloud-cache-prs, trigger: true, version: every }
+    - put: cloud-cache-prs
+      params:
+        path: cloud-cache-prs
+        status: pending
     - in_parallel:
         steps:
       {% for gemfireVersion in application["gemfireVersions"] %}
@@ -46,6 +50,16 @@ jobs:
         {% endfor %}
       {% endfor %}
     {% endfor %}
+    on_success:
+      put: cloud-cache-prs
+      params:
+        path: cloud-cache-prs
+        status: success
+    on_failure:
+      put: cloud-cache-prs
+      params:
+        path: cloud-cache-prs
+        status: failure
   {% endfor %}
 
 #  - name: deploy-to-public-repo

@@ -17,12 +17,3 @@ resources:
       private_key:  ((repo-key))
       repo:         pivotal/cloud-cache-examples
       base:         master
-
-#  - name: ci
-#    type: git
-#    source:
-#      branch: master
-#      depth: 1
-#      paths:
-#        - ci/*
-#      uri: https://github.com/pivotal/cloud-cache-examples.git
