@@ -5,7 +5,7 @@ APP_URL=${PCC_ENDPOINT:-127.0.0.1:8080}
 
 if [ -z ${PCC_ENDPOINT} ]; then
 
-    cd private-cloud-cache-examples/${APP_PATH}
+    cd cloud-cache-examples/${APP_PATH}
 
     apt-get update
     apt-get install -y lsof

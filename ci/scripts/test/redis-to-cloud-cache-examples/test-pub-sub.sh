@@ -3,7 +3,7 @@ export TERM=screen-256color
 
 if [ -z ${PCF_API_ENDPOINT} ]; then
 
-    cd private-cloud-cache-examples/${APP_PATH}
+    cd cloud-cache-examples/${APP_PATH}
 
    if [[ $(basename `pwd`) == "redis" ]]; then
         echo exit 0 > /usr/sbin/policy-rc.d
