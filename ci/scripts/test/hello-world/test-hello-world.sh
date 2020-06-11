@@ -9,7 +9,7 @@ if [ -z ${PCC_ENDPOINT} ]; then
     export JAVA_HOME=/usr/lib/jvm/java-${JAVA_VERSION}-openjdk-amd64
     export GF_JAVA=$JAVA_HOME/bin/java
 
-    cd cloud-cache-examples/hello-world/
+    cd cloud-cache-prs/hello-world/
 
     ./gradlew startCluster
     wait $!

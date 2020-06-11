@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 TMP_DIR=$(pwd)
-cd cloud-cache-examples/${APP_PATH}
+cd cloud-cache-prs/${APP_PATH}
 
 ./gradlew build \
     -PgemfireReleaseRepoUser=${GEMFIRE_RELEASE_REPO_USER} \
