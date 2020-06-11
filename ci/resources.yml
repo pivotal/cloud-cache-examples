@@ -8,7 +8,7 @@ resources:
   - name: cloud-cache-examples
     type: git
     source:
-      branch: develop
+      branch: master
       depth: 1
       paths:
         - ci/*
