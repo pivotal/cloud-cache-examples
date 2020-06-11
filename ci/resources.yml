@@ -8,6 +8,10 @@ resources:
   - name: cloud-cache-examples
     type: git
     source:
+      branch: develop
+      depth: 1
+      paths:
+        - ci/*
       uri: https://github.com/pivotal/cloud-cache-examples.git
 
   - name: cloud-cache-prs

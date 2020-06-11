@@ -48,6 +48,7 @@ jobs:
                 path: {{ './cloud-cache-examples/ci/scripts/test/{}'.format(application["localTestScript"]) }}
               inputs:
                 - name: cloud-cache-examples
+                - name: cloud-cache-prs
         {% endfor %}
       {% endfor %}
     {% endfor %}
