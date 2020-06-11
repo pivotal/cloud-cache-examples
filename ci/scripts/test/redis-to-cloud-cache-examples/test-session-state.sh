@@ -20,6 +20,11 @@ if [ -z ${PCC_ENDPOINT} ]; then
         -PgemfireReleaseRepoPassword=${GEMFIRE_RELEASE_REPO_PASSWORD} \
         -PjavaVersion=1.${JAVA_VERSION} &
 
+    if [ $? -ne 0 ]; then
+        echo "$(tput setaf 1)Could not run app"
+        exit 1
+    fi
+
     while ! lsof -i tcp:8080; do
         sleep 1
     done
