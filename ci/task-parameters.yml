@@ -2,10 +2,8 @@ applications:
   - appName: hello-world
     appPath: hello-world
     jarName: hello-world
-    cacheName: cloudcache
     healthCheckType: port
     localTestScript: hello-world/test-hello-world.sh
-    pcfSmokeTestScript: hello-world/test-hello-world.sh
     gemfireVersions:
       - "9.8.6"
       - "9.9.1"
@@ -19,21 +17,12 @@ applications:
     javaVersions:
       - "8"
       - "11"
-    cloudCacheVersions:
-      - cloudCacheVersion: "pcc1.8"
-        gemfireVersion: 9.8.6
-      - cloudCacheVersion: "pcc1.9"
-        gemfireVersion: 9.8.6
-      - cloudCacheVersion: "pcc1.10"
-        gemfireVersion: 9.9.1
 
   - appName: look-aside-cache
     appPath: look-aside-cache
     jarName: look-aside-cache
-    cacheName: cloudcache
     healthCheckType: port
     localTestScript: local/run-gradle-test.sh
-    pcfSmokeTestScript: pcc/test-pcc-look-aside.sh
     gemfireVersions:
       - "none"
     springBootVersions:
@@ -43,21 +32,12 @@ applications:
     javaVersions:
       - "8"
       - "11"
-    cloudCacheVersions:
-      - cloudCacheVersion: "pcc1.8"
-        gemfireVersion: 9.8.6
-      - cloudCacheVersion: "pcc1.9"
-        gemfireVersion: 9.8.6
-      - cloudCacheVersion: "pcc1.10"
-        gemfireVersion: 9.9.1
 
   - appName: session-state
     appPath: session-state
     jarName: session-state
-    cacheName: cloudcache
     healthCheckType: port
     localTestScript: local/run-gradle-test.sh
-    pcfSmokeTestScript: pcc/test-pcc-session-state.sh
     usesCypressTests: true
     gemfireVersions:
       - "none"
@@ -68,21 +48,12 @@ applications:
     javaVersions:
       - "8"
       - "11"
-    cloudCacheVersions:
-      - cloudCacheVersion: "pcc1.8"
-        gemfireVersion: 9.8.6
-      - cloudCacheVersion: "pcc1.9"
-        gemfireVersion: 9.8.6
-      - cloudCacheVersion: "pcc1.10"
-        gemfireVersion: 9.9.1
 
   - appName: boot-cloud-cache
     appPath: redis-to-cloud-cache/session-state/spring-session-boot/cloud-cache
     jarName: boot.session.cloudcache
-    cacheName: cloudcache-uses-spring-security
     healthCheckType: port
     localTestScript: redis-to-cloud-cache-examples/test-session-state.sh
-    pcfSmokeTestScript: redis-to-cloud-cache-examples/test-session-state.sh
     gemfireVersions:
       - "none"
     springBootVersions:
@@ -92,21 +63,12 @@ applications:
     javaVersions:
       - "8"
       - "11"
-    cloudCacheVersions:
-      - cloudCacheVersion: "pcc1.8"
-        gemfireVersion: 9.8.6
-      - cloudCacheVersion: "pcc1.9"
-        gemfireVersion: 9.8.6
-      - cloudCacheVersion: "pcc1.10"
-        gemfireVersion: 9.9.1
 
   - appName: boot-simple-cloud-cache
     appPath: redis-to-cloud-cache/session-state/spring-session-boot-simple/cloud-cache
     jarName: bootsimple.session.cloudcache
-    cacheName: cloudcache-uses-spring-security
     healthCheckType: port
     localTestScript: redis-to-cloud-cache-examples/test-session-state.sh
-    pcfSmokeTestScript: redis-to-cloud-cache-examples/test-session-state.sh
     gemfireVersions:
       - "none"
     springBootVersions:
@@ -116,21 +78,12 @@ applications:
     javaVersions:
       - "8"
       - "11"
-    cloudCacheVersions:
-      - cloudCacheVersion: "pcc1.8"
-        gemfireVersion: 9.8.6
-      - cloudCacheVersion: "pcc1.9"
-        gemfireVersion: 9.8.6
-      - cloudCacheVersion: "pcc1.10"
-        gemfireVersion: 9.9.1
 
   - appName: boot-json-cloud-cache
     appPath: redis-to-cloud-cache/session-state/spring-session-boot-json/cloud-cache
     jarName: bootjson.session.cloudcache
-    cacheName: cloudcache-uses-spring-security
     healthCheckType: port
     localTestScript: redis-to-cloud-cache-examples/test-session-state-json.sh
-    pcfSmokeTestScript: redis-to-cloud-cache-examples/test-session-state-json.sh
     gemfireVersions:
       - "none"
     springBootVersions:
@@ -140,21 +93,12 @@ applications:
     javaVersions:
       - "8"
       - "11"
-    cloudCacheVersions:
-      - cloudCacheVersion: "pcc1.8"
-        gemfireVersion: 9.8.6
-      - cloudCacheVersion: "pcc1.9"
-        gemfireVersion: 9.8.6
-      - cloudCacheVersion: "pcc1.10"
-        gemfireVersion: 9.9.1
 
   - appName: pub-sub-cloud-cache
     appPath: redis-to-cloud-cache/pub-sub/cloud-cache
     jarName: pubsub.cloudcache
-    cacheName: cloudcache-uses-spring-security
     healthCheckType: process
     localTestScript: redis-to-cloud-cache-examples/test-pub-sub.sh
-    pcfSmokeTestScript: redis-to-cloud-cache-examples/test-pub-sub.sh
     gemfireVersions:
       - "none"
     springBootVersions:
@@ -164,21 +108,12 @@ applications:
     javaVersions:
       - "8"
       - "11"
-    cloudCacheVersions:
-      - cloudCacheVersion: "pcc1.8"
-        gemfireVersion: 9.8.6
-      - cloudCacheVersion: "pcc1.9"
-        gemfireVersion: 9.8.6
-      - cloudCacheVersion: "pcc1.10"
-        gemfireVersion: 9.9.1
 
   - appName: boot-redis
     appPath: redis-to-cloud-cache/session-state/spring-session-boot/redis
     jarName: boot.session.redis
-    cacheName: redis
     healthCheckType: port
     localTestScript: redis-to-cloud-cache-examples/test-session-state.sh
-    pcfSmokeTestScript: redis-to-cloud-cache-examples/test-session-state.sh
     gemfireVersions:
       - "none"
     springBootVersions:
@@ -187,17 +122,12 @@ applications:
         springBootVersionFormattedForAppName: 2-2
     javaVersions:
       - "8"
-    cloudCacheVersions:
-      - cloudCacheVersion: "redis"
-        gemfireVersion: 9.8.6
 
   - appName: boot-simple-redis
     appPath: redis-to-cloud-cache/session-state/spring-session-boot-simple/redis
     jarName: bootsimple.session.redis
-    cacheName: redis
     healthCheckType: port
     localTestScript: redis-to-cloud-cache-examples/test-session-state.sh
-    pcfSmokeTestScript: redis-to-cloud-cache-examples/test-session-state.sh
     gemfireVersions:
       - "none"
     springBootVersions:
@@ -206,17 +136,12 @@ applications:
         springBootVersionFormattedForAppName: 2-2
     javaVersions:
       - "8"
-    cloudCacheVersions:
-      - cloudCacheVersion: "redis"
-        gemfireVersion: 9.8.6
 
   - appName: boot-json-redis
     appPath: redis-to-cloud-cache/session-state/spring-session-boot-json/redis
     jarName: bootjson.session.redis
-    cacheName: redis
     healthCheckType: port
     localTestScript: redis-to-cloud-cache-examples/test-session-state-json.sh
-    pcfSmokeTestScript: redis-to-cloud-cache-examples/test-session-state-json.sh
     gemfireVersions:
       - "none"
     springBootVersions:
@@ -225,17 +150,12 @@ applications:
         springBootVersionFormattedForAppName: 2-2
     javaVersions:
       - "8"
-    cloudCacheVersions:
-      - cloudCacheVersion: "redis"
-        gemfireVersion: 9.8.6
 
   - appName: pub-sub-redis
     appPath: redis-to-cloud-cache/pub-sub/redis
     jarName: pubsub.redis
-    cacheName: redis
     healthCheckType: process
     localTestScript: redis-to-cloud-cache-examples/test-pub-sub.sh
-    pcfSmokeTestScript: redis-to-cloud-cache-examples/test-pub-sub.sh
     gemfireVersions:
       - "none"
     springBootVersions:
@@ -244,27 +164,3 @@ applications:
         springBootVersionFormattedForAppName: 2-2
     javaVersions:
       - "8"
-    cloudCacheVersions:
-      - cloudCacheVersion: "redis"
-        gemfireVersion: 9.8.6
-
-destroyPCCRegionTasks:
-  cloudCacheVersions:
-    - cloudCacheVersion: "1.8"
-      dockerTag: 9.8.6
-    - cloudCacheVersion: "1.9"
-      dockerTag: 9.8.6
-    - cloudCacheVersion: "1.10"
-      dockerTag: 9.9.1
-  javaVersions:
-    - "8"
-    - "11"
-  springVersions:
-    - "2-1"
-    - "2-2"
-
-pcfEnvironmentNames:
-  pcc1.8: "kerman"
-  pcc1.9: "atwater"
-  pcc1.10: "nassau"
-  redis: "bishop"

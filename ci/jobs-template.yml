@@ -64,27 +64,3 @@ jobs:
         status: failure
         context: {{ 'local-test-{}'.format(application["appName"]) }}
   {% endfor %}
-
-#  - name: deploy-to-public-repo
-#    plan:
-#      - get: cloud-cache-examples
-#        passed:
-#        {% for application in applications %}
-#        - {{ 'local-test-{}'.format(application["appName"]) }}
-#        {% endfor %}
-#      - get: public-cloud-cache-examples
-#      - task: deploy-public-repo
-#        config:
-#          platform: linux
-#          image_resource:
-#            type: docker-image
-#            source: {repository: ubuntu}
-#          run:
-#            path: ./cloud-cache-examples/ci/scripts/prepare-repo-for-push/prepare-repo-for-push.sh
-#          inputs:
-#            - name: cloud-cache-examples
-#          outputs:
-#            - name: cloud-cache-examples-dir
-#      - put: public-cloud-cache-examples
-#        params:
-#          repository: public-cloud-cache-examples-dir
