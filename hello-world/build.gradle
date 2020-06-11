@@ -23,7 +23,7 @@ plugins {
 }
 
 apply plugin: 'io.spring.dependency-management'
-apply plugin: 'org.springframework.boot'
+apply plugin: 'org.springframework.boo'
 
 group = 'io.pivotal.cloudcache.helloworld'
 sourceCompatibility = "$javaVersion"
