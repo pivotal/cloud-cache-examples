@@ -13,10 +13,9 @@ if [ -z ${PCC_ENDPOINT} ]; then
 
     ./gradlew startCluster
 
-     if [ $? -ne 0 ]; then
-        echo "$(tput setaf 1)Could not start cluster"
+    if [ $? -ne 0 ]; then
         exit 1
-     fi
+    fi
 
     wait $!
     ./gradlew bootRun -PgemfireReleaseRepoUser=${GEMFIRE_RELEASE_REPO_USER} \
@@ -25,10 +24,11 @@ if [ -z ${PCC_ENDPOINT} ]; then
      -PspringBootStarterVersion=${SPRING_BOOT_STARTER_VERSION} \
      -PjavaVersion=1.${JAVA_VERSION} &
 
-      if [ $? -ne 0 ]; then
-         echo "$(tput setaf 1)Could not run app"
+    if [ $? -ne 0 ]; then
+        echo "$(tput setaf 1)Could not run app"
         exit 1
-      fi
+    fi
+
     while ! lsof -i tcp:8080; do
       sleep 1
     done
