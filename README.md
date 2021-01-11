@@ -10,7 +10,17 @@ Unless required by applicable law or agreed to in writing, software distributed 
 "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific
 language governing permissions and limitations under the License.-->
 
-# Cloud Cache Examples
+# New Repo with Updated Examples and Guides
+Please note that we have updated the examples and guides for Tanzu GemFire (previously known as Pivotal Cloud Cache).  
+
+The new repo can be found here:
+https://github.com/gemfire/spring-for-apache-geode-examples
+
+The updated developer guides can be found here:
+https://tanzugemfire.dev/
+
+
+# Cloud Cache Examples (Now outdated - please note above)
 
 This repo contains examples of apps that demonstrate the use of Pivotal Cloud Cache and can be used with the 
 [Cloud Cache Developer Guide website](https://cloudcache.dev).
