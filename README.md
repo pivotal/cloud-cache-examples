@@ -14,10 +14,10 @@ language governing permissions and limitations under the License.-->
 Please note that we have updated the examples and guides for Tanzu GemFire (previously known as Pivotal Cloud Cache).  
 
 The new repo can be found here:
-https://github.com/gemfire/spring-for-apache-geode-examples
+https://github.com/gemfire/spring-for-gemfire-examples
 
 The updated developer guides can be found here:
-https://tanzugemfire.dev/
+https://gemfire.dev/
 
 
 # Cloud Cache Examples (Now outdated - please note above)
